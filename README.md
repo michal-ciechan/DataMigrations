@@ -15,7 +15,7 @@ var sql = Insert
     // Set Table Name
     .Into("Person.Address")
 
-    // Set Columns by using a string key any any T object
+    // Set Columns by using a string key and any T object
     .Set("City","London")
 
     // Set Columns by using a member expression
@@ -38,7 +38,29 @@ TODO:
 
 ## Deletes
 
+```csharp
+// Fluent Interface
+var sql = Delete
 
+    // Set Table Name
+    .From("Person.Address")
+
+    // Filter Columns by using a string key and any T object
+    .Where("City", "London")
+
+    // Filter Columns by using a member expression
+    // e.g. string AddressLine1 = null;
+    // Member name is used as the column name
+    // Member value is used as the value
+    .Where(() => AddressLine1)
+
+    // Call ToString() to generate SQL
+    .ToString();
+
+sql.Should().Be(
+    "DELETE FROM Person.Address " +
+    "WHERE City = 'London' AND AddressLine1 IS NULL");
+```
 
 # Converting C# Values to SQL
 
