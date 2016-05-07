@@ -2,6 +2,22 @@
 
 Code First Data Migrations - Allowing you to generate SQL to insert, update, and delete data which can be used as part of you're Code First Migrations
 
+# Table of Contents
+
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [DataMigrations](#datamigrations)
+- [Table of Contents](#table-of-contents)
+- [Generating SQL](#generating-sql)
+	- [Inserts](#inserts)
+	- [Updates](#updates)
+	- [Deletes](#deletes)
+- [Converting C# Values to SQL](#converting-c-values-to-sql)
+	- [Default converters](#default-converters)
+	- [Custom Converters](#custom-converters)
+
+<!-- /TOC -->
+
 # Generating SQL
 
 Data migrations allows you to generate SQL using a fluent syntax.
