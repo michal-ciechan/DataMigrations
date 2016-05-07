@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using DataMigrations.Helpers;
 
 namespace DataMigrations
 {
@@ -31,7 +32,7 @@ namespace DataMigrations
 
         public Insert Set<T>(Expression<Func<T>> expression)
         {
-            var column = GetMemberName(expression);
+            var column = expression.GetMemberName();
 
             var value = expression.Compile()().ToSql();
 
@@ -69,17 +70,9 @@ namespace DataMigrations
             return string.Join(", ", Setters.Select(x => x.Key));
         }
 
-        private string GetMemberName<T>(Expression<Func<T>> expression)
+        public static Insert Into(string table)
         {
-            if (expression == null)
-                throw new ArgumentNullException(nameof(expression), "Cannot provide a null expression");
-
-            var body = expression.Body as MemberExpression;
-
-            if (body == null) throw new NotImplementedException(
-                    $"Cannot get member name from expression type '{expression.Body.GetType().Name}'");
-
-            return body.Member.Name;
+            return new Insert(table);
         }
     }
 }

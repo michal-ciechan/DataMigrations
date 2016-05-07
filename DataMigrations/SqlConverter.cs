@@ -37,7 +37,7 @@ namespace DataMigrations
 
             if (type == typeof(bool))
             {
-                SetCustom<bool?>(ToSql);
+                SetCustom<bool>(ToSql);
                 return;
             }
             if (type == typeof(bool?))

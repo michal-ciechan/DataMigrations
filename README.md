@@ -2,15 +2,18 @@
 
 Code First Data Migrations - Allowing you to generate SQL to insert, update, and delete data which can be used as part of you're Code First Migrations
 
-# Generating SQL Inserts
+# Generating SQL
+
+Data migrations allows you to generate SQL using a fluent syntax.
+
+## Inserts
 
 ```csharp
 // Fluent Interface
-// Fluent Interface
-var sql = new Insert()
+var sql = Insert
 
     // Set Table Name
-    .IntoTable("Person.Address")
+    .Into("Person.Address")
 
     // Set Columns by using a string key any any T object
     .Set("City","London")
@@ -29,9 +32,19 @@ sql.Should().Be(
     "VALUES ('London', 'A Street')");
 ```
 
+## Updates
+
+TODO:
+
+## Deletes
+
+
+
 # Converting C# Values to SQL
 
 DataMigrations provides a handfull of `ToSql()` extension methods which return back the SQL value as text such as the following:
+
+## Default converters
 
 ```csharp
 // Booleans should be converted to 0/1, null bool? should return NULL
