@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace DataMigrations
+namespace DataMigrations.Helpers
 {
     public static class SqlConverter
     {
         private static readonly Dictionary<Type, Func<object, string>> CustomConversions;
-        private static bool InCustomConversion;
+        private static bool _inCustomConversion;
 
         private static readonly ThreadLocal<string> Result = new ThreadLocal<string>();
 
@@ -95,7 +95,7 @@ namespace DataMigrations
 
         private static bool TryGetCustom<T>(T obj)
         {
-            if (InCustomConversion)
+            if (_inCustomConversion)
                 return false;
 
             Func<object, string> conversion;
@@ -103,9 +103,9 @@ namespace DataMigrations
             if (!CustomConversions.TryGetValue(typeof(T), out conversion))
                 return false;
 
-            InCustomConversion = true;
+            _inCustomConversion = true;
             Result.Value = conversion(obj);
-            InCustomConversion = false;
+            _inCustomConversion = false;
 
             return true;
         }

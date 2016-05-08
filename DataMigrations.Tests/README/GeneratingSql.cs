@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using DataMigrations.Helpers;
 using FluentAssertions;
 using NUnit.Framework;
 

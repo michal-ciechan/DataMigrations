@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using DataMigrations.Helpers;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace DataMigrations.Tests
+namespace DataMigrations.Tests.Helpers
 {
     [TestFixture]
     public class SqlConverterTests
     {
-
         [SetUp]
         public void A_TestSetup()
         {

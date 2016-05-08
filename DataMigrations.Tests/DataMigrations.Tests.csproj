@@ -58,7 +58,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="README\GeneratingSql.cs" />
     <Compile Include="README\ConvertingCSharpValuesToSql.cs" />
-    <Compile Include="SqlConverter.cs" />
+    <Compile Include="Helpers\SqlConverterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -43,7 +43,10 @@
     <Compile Include="Delete.cs" />
     <Compile Include="Insert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlConverter.cs" />
+    <Compile Include="Helpers\SqlConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SqlBuilders\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
