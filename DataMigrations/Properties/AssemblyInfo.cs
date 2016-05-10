@@ -6,12 +6,15 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DataMigrations")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DataMigrations")]
+[assembly:
+    AssemblyDescription(
+        "A Fluent SQL Generator which allows you to generate Insert, Update and Delete SQL Statements."
+        )]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Michal Ciechan @ Codeperf.net")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("Codeperf")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

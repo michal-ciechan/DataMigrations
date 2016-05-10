@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/michal-ciechan/DataMigrations</projectUrl>
+    <!-- <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl> -->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Data Migrations is Fluent SQL Generator which allows you to generate Insert, Update and Delete.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>Data Migrations Generate Fluent SQL Statements Generator Insert Update Delete</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\MoqInjectionContainer.*" target="lib\net40\" />
+  </files>
+</package>
