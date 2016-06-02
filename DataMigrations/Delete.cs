@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using DataMigrations.Helpers;
+using DataMigrations.Interfaces;
 
 namespace DataMigrations
 {
-    public class Delete
+    public class Delete : ISql
     {
         public string Table { get; set; }
 

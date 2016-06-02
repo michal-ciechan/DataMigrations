@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataMigrations.Helpers
 {
-    public static class ExpressionHelper
+    static class ExpressionHelper
     {
         public static string GetMemberName<T>(this Expression<Func<T>> expression)
         {

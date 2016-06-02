@@ -39,9 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\MigrationExtensions.cs" />
+    <Compile Include="Extensions\ClipboardExtensions.cs" />
     <Compile Include="Helpers\ExpressionHelper.cs" />
     <Compile Include="Delete.cs" />
     <Compile Include="Insert.cs" />
+    <Compile Include="Interfaces\ISql.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\SqlConverter.cs" />
   </ItemGroup>

@@ -118,3 +118,69 @@ SqlConverter.CustomConversions.Add(typeof(int?),
 ((int?)1337).ToSql().Should().Be("'1337'");
 ((int?)null).ToSql().Should().Be("'NO INT'");
 ```
+
+# Additional Features
+
+## Identity Insert
+
+Insert Auto-Identity values by using the `Insert.WithIdentityInsert()` method
+which will add `SET IDENTITY_INSERT Table ON|OFF` statements
+to the start and end of the sql query.
+
+
+```csharp
+
+var sql = Insert
+		.Into("Person")
+		.WithIdentityInsert() // <-- Set Identity Insert On
+		.Set("Id", 2) // Identity Column
+		.ToString();
+
+sql.Should().Be(
+		"\r\nSET IDENTITY_INSERT Person ON;\r\n" +
+
+		"INSERT INTO Person (Id) VALUES (2)" +
+
+		"\r\nSET IDENTITY_INSERT Person OFF;\r\n");
+```
+
+## EntityFramework Extensions
+
+There is an extension method callsed `Execute` for `ISql` (base class for `Insert`,`Delete`, etc helper classes) which takes `Action<string, bool, object>` which is the signature for the `DbMigration.Sql(..)` method which allows you to do the following.
+
+```csharp
+using DataMigrations.EntityFramework;
+
+public partial class Inserts : DbMigration
+{
+		public override void Up()
+		{
+				Insert.Into("Person")
+						.Set("Name", "Michal Ciechan")
+						.Execute(Sql); // <-- Extension method which executes SQL
+		}
+
+		public override void Down()
+		{
+				Delete.From("Person")
+						.Where("Name", "Michal Ciechan")
+						.Execute(Sql); // <-- Extension method which executes SQL
+		}
+}
+```
+
+## Clipboard Extensions
+
+There is also a `ISql.ToClipboard()` extension which copies the SQL to the clipboard, for people who do not use EF CodeFirst Migrations, and want to generate the SQL easily and paste into a file which they can add to their SQL release process.
+
+**WARNING** - This could potentially leak memory, so do not use in production. Only in test/dev environment to easily generate SQL and copy it to the clipboard.
+
+```csharp
+Insert.Into("Person")
+		.Set("Name", "Michal Ciechan")
+		.ToClipboard();
+
+var str = GetClipboardData();
+
+str.Should().Be("INSERT INTO Person (Name) VALUES ('Michal Ciechan')");
+```
